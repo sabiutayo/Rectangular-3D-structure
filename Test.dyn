@@ -1,0 +1,1397 @@
+{
+  "Uuid": "ad88cff6-1158-4f3d-8895-e8c995ffeb30",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Test",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "8c12fcfd10ed4151a9eec99916f4b2ff",
+      "Inputs": [
+        {
+          "Id": "502dd622c8424d14ab72377224d2fa2e",
+          "Name": "file",
+          "Description": "File representing the Excel workbook\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a4d5879d27042ed80b42a331c35d7d5",
+          "Name": "sheetName",
+          "Description": "Name of the worksheet containing data\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e4b2348f19a442918ca760648e9fef52",
+          "Name": "readAsStrings",
+          "Description": "Toggle to read cells as strings\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "795123190f714605bd5e2e9f5c5cf3b8",
+          "Name": "showExcel",
+          "Description": "Toggle to show excel's main window\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f9339fc1949e49f3abf2854ebaa56e3b",
+          "Name": "data",
+          "Description": "Rows of data from the Excel worksheet",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Read data from a Microsoft Excel spreadsheet. Data is read by row and returned in a series of lists by row. Rows and columns are zero-indexed; for example, the value in cell A1 will appear in the data list at [0,0]. This node requires Microsoft Excel to be installed.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "D:\\KITURI\\JAva\\Projects\\Dynamo\\Nodes.xlsx",
+      "InputValue": "D:\\KITURI\\JAva\\Projects\\Dynamo\\Nodes.xlsx",
+      "NodeType": "ExtensionNode",
+      "Id": "2916341fe7254f179a9023966e620702",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7760b3f961ee4924ad6127ed741803e9",
+          "Name": "",
+          "Description": "File Path",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its file path."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "2f40a271b8be41bbac72866f5c8ac0d9",
+      "Inputs": [
+        {
+          "Id": "f617e2cb9f9648c8b0bf4fc5c7c4ece0",
+          "Name": "path",
+          "Description": "Path to the file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "98bbb3ce339c45099ef97c1d9041f163",
+          "Name": "file",
+          "Description": "File object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a file object from a path."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Foaie1",
+      "Id": "709ef003446c402b953c1af75db8d4e2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "fd4fd872bec847abb058a9da3918d637",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "7aa2a856f5ef40268ca4a790dade4f66",
+      "Inputs": [
+        {
+          "Id": "6c8813e81bb2454499ef1a94c1343e39",
+          "Name": "lists",
+          "Description": "List of lists to be transposed\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "67c5d23fc4784f64aac39d42afc757c4",
+          "Name": "lists",
+          "Description": "List of transposed lists",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\nfor x in range(len(IN)): \r\n    y =IN[x][0]\r\n# Assign your output to the OUT variable.\r\nOUT = y",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "78bb249da4274619b73fd31b91089b0d",
+      "Inputs": [
+        {
+          "Id": "48d190fd766b477f9e7eecdbc8ac630e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4f289e2d3c4040e991fbeadd1c74c09a",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\nfor x in range(len(IN)): \r\n    y =IN[x][1]\r\n# Assign your output to the OUT variable.\r\nOUT = y",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "9de7a0d64caf4f308cd7d21f467384b0",
+      "Inputs": [
+        {
+          "Id": "74955da9f3174458a6b9ecb406b9a957",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8dcd8f3469e546d2879c219474ae01fa",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\nfor x in range(len(IN)): \r\n    y =IN[x][2]\r\n# Assign your output to the OUT variable.\r\nOUT = y",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "2603795e4dc94e80a9fa16eb44bade87",
+      "Inputs": [
+        {
+          "Id": "c49c2fde495b4fd284769e53d97ba566",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bbcf7c54af5c473297897b51e6f951c7",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\nfor x in range(len(IN)): \r\n    y =IN[x][3]\r\n#    output to the OUT variable.\r\nOUT = y",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "eba86a943ed54190a31c38f1cc489b6f",
+      "Inputs": [
+        {
+          "Id": "acd1e626cbbd41a1a2245e0af842f0a9",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dc11bdfa377848428e64dc8c078c8a73",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "3a19e0368d374e4ea1cc7506357ad1e4",
+      "Inputs": [
+        {
+          "Id": "4a6e127e0c84424da6be442205b1e982",
+          "Name": "x",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3443ebc07623434092903bac798bdf12",
+          "Name": "y",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c43abc95bab6496496846e1c2551bfc6",
+          "Name": "z",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2fa2881d8b9940a183f1ad27c159a4b3",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynamoSimulation.RSA.AnalyticalModel.AnalyticalNode.ByPoint@Autodesk.DesignScript.Geometry.Point",
+      "Id": "a79ae8cec67844e6971c5bdc85730531",
+      "Inputs": [
+        {
+          "Id": "786567fd0ec341b1975a6ea66baffe0b",
+          "Name": "point",
+          "Description": "The analytical node position\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9eb9db389c0e465a89ae2d7c6745e432",
+          "Name": "AnalyticalNode",
+          "Description": "A newly created analytical node.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create an analytical node using an existing geometrical point.\n\nAnalyticalNode.ByPoint (point: Point): AnalyticalNode"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 3.0,
+      "Id": "a18cd55bdf944dacb5e5897fc8cd1230",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b94a4d6afc0246b48e49d1b395bd0d19",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "5f97d96cbc0f41fa92cb4f4d5cd53f75",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b0f797ccf3fc419d836ecd4723413fa1",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Range, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "5bf74118d6f94ef7bec165fe2b5097f3",
+      "Inputs": [
+        {
+          "Id": "f153f173419f4088b8ca60a0df920102",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50ebfba946054ce7ad1059f066477c64",
+          "Name": "end",
+          "Description": "Number or letter to end the sequence at\r\nDefault value: 9",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5cf66972df3243ca9d2d561082de2dba",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb16b5907be540beafab1aa95f14eec6",
+          "Name": "list",
+          "Description": "New list of type: var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers or letters in the specified range."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 10.0,
+      "MinimumValue": 1.0,
+      "StepValue": 0.05,
+      "InputValue": 1.0,
+      "Id": "44fa4059041c45dc9bb9065853b5a8e7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d834a488edb64bd2a8f32250822e3e83",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 3.0,
+      "Id": "1ff56d1593764832b2861cda5011f70e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "198aac10fb6346cd8f7e6c158fe0cf0e",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "00219e66e3894145b2013f7ee910999b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5a68a75e6f474aef8ade8e6550bc6316",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Range, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d826d6d50d704955a0250552af4e4c5c",
+      "Inputs": [
+        {
+          "Id": "d0a6fc0f88d541cfa742b0157fcc1907",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "07efe1b97c9041b5a186a0fa3c98ea17",
+          "Name": "end",
+          "Description": "Number or letter to end the sequence at\r\nDefault value: 9",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "58e9366e38c24c54a95fd26958eef358",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e2bc9fea319b4ed298065aac0cc9d355",
+          "Name": "list",
+          "Description": "New list of type: var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers or letters in the specified range."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 10.0,
+      "MinimumValue": 1.0,
+      "StepValue": 0.05,
+      "InputValue": 1.0,
+      "Id": "3f8add0dc1bb4777860d21f2db66636d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "59827a963702495baaf9fa57a0d027eb",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Range, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "e116e84a83b34e28b53be2f20f0bf8d3",
+      "Inputs": [
+        {
+          "Id": "2981ff30925c42cd80638c1971942171",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "595d60fe431047c68da35b067bebb188",
+          "Name": "end",
+          "Description": "Number or letter to end the sequence at\r\nDefault value: 9",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e612fb543c674aec9edf9551292b55ce",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f186ce77c48e4bde8ca16a8fd254735d",
+          "Name": "list",
+          "Description": "New list of type: var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers or letters in the specified range."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 10.0,
+      "MinimumValue": 1.0,
+      "StepValue": 0.05,
+      "InputValue": 1.0,
+      "Id": "86dc770c004e4e0a97a92d282e89f6a7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e77328670d6847949a2c7c54d38607a5",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 240.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 3.0,
+      "Id": "55932b091ffe432989d54c536241c36d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e9b70f3bb8b440ea982cc4550d57f4a0",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "e242a1c6230947f5a10eeda20fecd19d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e6aba09cde404c7587776ed41c076255",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\nxCoords =[]\r\nyCoords =[]\r\nzCoords =[]\r\npoints =[]\r\n# Generate X coords\r\nfor i in range(len(IN[1]*len(IN[2]))):\r\n    for j in IN[0]:\r\n        xCoords.append(j)\r\n# Generate Y coords        \r\nfor k in range(len(IN[2])):\r\n\tfor i in IN[1]:\r\n\t\tfor j in range(len(IN[0])):\r\n\t\t\tyCoords.append(i)\r\n# Generate Z coords\t\t\t\r\nfor k in IN[2]:\r\n\tfor j in range(len(IN[0])*len(IN[1])):\r\n\t\tzCoords.append(k)\r\n\r\n#Generate points\r\nfor i in range(0,(len(IN[0])*len(IN[1])*len(IN[2]))):\r\n    points.append(Point.ByCoordinates(xCoords[i], yCoords[i], zCoords[i]))\r\n\r\n\r\n\r\n#Start points\r\nstartPoints = []\r\n\r\n#X direction starting points\r\nstartStepX = len(IN[0])\r\nstartCounterX = 1\r\nfor i, val in enumerate(points[0:(len(points)-1)]):\r\n    if startCounterX == (startStepX):\r\n        startCounterX = 1\r\n        continue\r\n    startPoints.append(val)\r\n    startCounterX += 1\r\n#Y direction starting points\r\nstartStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nlastPoints = len(points)-len(IN[0])\r\nstartCounterY = 1\r\nfor i, val in enumerate(points[0:lastPoints]):\r\n    if (startCounterY > startStepY and startCounterY <= finalStepY):\r\n        startCounterY += 1\r\n        if startCounterY > finalStepY:\r\n            startCounterY = 1\r\n        continue    \r\n    startPoints.append(val)\r\n    startCounterY += 1\r\n#Z direction starting points\r\nlastPointsZ = len(IN[0])*len(IN[1])*len(IN[2])-len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[0:lastPointsZ]):\r\n    startPoints.append(val)\r\n\r\n#End points\r\nendPoints = []\r\n\r\n#X direction ending points\r\nendStepX = len(IN[0])\r\nendCounterX = 1\r\nfor i, val in enumerate(points[1:len(points)]):\r\n    if endCounterX == (endStepX):\r\n        endCounterX = 1\r\n        continue\r\n    endPoints.append(val)\r\n    endCounterX += 1\r\n#Y direction ending points\r\nendStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nfirstPoints = len(IN[0])\r\nendCounterY = 1\r\nfor i, val in enumerate(points[firstPoints:len(points)]):\r\n    if (endCounterY > startStepY and endCounterY <= finalStepY):\r\n        endCounterY += 1\r\n        if endCounterY > finalStepY:\r\n            endCounterY = 1\r\n        continue    \r\n    endPoints.append(val)\r\n    endCounterY += 1\r\n#Z direction ending points\r\nfirstPointsZ = len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[firstPointsZ:len(points)]):\r\n    endPoints.append(val)\r\n\r\n\r\n#Generate lines from points\r\nlines = []\r\n\r\ns = 0\r\ne = 0\r\nfor i in range(0,len(startPoints)):\r\n    lines.append(Line.ByStartPointEndPoint(startPoints[s], endPoints[e]))\r\n    s += 1\r\n    e += 1\r\n\r\n#Generate surfaces\r\nsurfaces = []\r\nresetline = 0\r\nresetcolumn = 0\r\nendline = len(IN[0])-1\r\nendcolumn = len(IN[0])*len(IN[1])-len(IN[0])\r\nendlist = len(points)\r\nfor i, p in enumerate(points[0:len(points)-endline-1]):\r\n    if resetline == endline or resetline == endcolumn:\r\n        resetline = 0\r\n        resetcolumn = 0\r\n        continue   \r\n    resetline = resetline + 1\r\n    resetcolumn = resetcolumn + 1\r\n    surfaces.append(Surface.ByPerimeterPoints([\r\n    points[i],\r\n    points[i+1],\r\n    points[i+len(IN[1])+1],\r\n    points[i+len(IN[1])], \r\n    ]))\r\n# Assign your output to the OUT variable.\r\nOUT = [points, lines, surfaces]",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "03d62185daa0418180f8d317af267143",
+      "Inputs": [
+        {
+          "Id": "344f654826b04c5e86f00aff365547ef",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ce1b81ce5b984ec99c75558619d3847e",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4665739599fb4ad8a7a51e124907c4d9",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9872365155e34b46b6fa42f4393f8167",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "//points\ninput[0];\n//lines\ninput[1];\n//surfaces\n//output[2];",
+      "Id": "17a36ce833a649d1a0b9862273f8abbb",
+      "Inputs": [
+        {
+          "Id": "07a19502ff724fc3b3367f6c5f8b0a7c",
+          "Name": "input",
+          "Description": "input",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2bb2d368c2074c6e97e8dbcc971c391a",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "af9a37aba27d4392a4716ad434e59d53",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "WasExecuted": true,
+      "Camera": {
+        "Name": "208ad7bd-1f8d-4396-8dd1-6a78fabe2d95 Preview",
+        "EyeX": 6.4860007762908936,
+        "EyeY": 3.2400854825973511,
+        "EyeZ": 1.5384699106216431,
+        "LookX": -5.5285730361938477,
+        "LookY": -1.3990304470062256,
+        "LookZ": -3.564157247543335,
+        "UpX": 0.0054618897847831249,
+        "UpY": 0.99997895956039429,
+        "UpZ": 0.0035211576614528894
+      },
+      "NodeType": "ExtensionNode",
+      "Id": "208ad7bd1f8d43968dd16a78fabe2d95",
+      "Inputs": [
+        {
+          "Id": "a033f16122104105b66aa6a8cf0076dd",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a1e04a92566479cbfeadeb00f9d13b4",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Shows a dynamic preview of geometry."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "1178da6de9204d87a5e186aab27371b1",
+      "Inputs": [
+        {
+          "Id": "485894108aca4a708c6a73ca5b8d296e",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d37ab02bc58946bc8f4d972524dde7ac",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Polygon Surface connecting input Points in a closed Polygon and patching it.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f9339fc1949e49f3abf2854ebaa56e3b",
+      "End": "6c8813e81bb2454499ef1a94c1343e39",
+      "Id": "496fb36440df4512a23db85c88ebece7"
+    },
+    {
+      "Start": "98bbb3ce339c45099ef97c1d9041f163",
+      "End": "502dd622c8424d14ab72377224d2fa2e",
+      "Id": "2de1ff8e2b3442e6bf693c9c2fb9f940"
+    },
+    {
+      "Start": "fd4fd872bec847abb058a9da3918d637",
+      "End": "6a4d5879d27042ed80b42a331c35d7d5",
+      "Id": "e9b989312bc74890b743c89a2195211d"
+    },
+    {
+      "Start": "67c5d23fc4784f64aac39d42afc757c4",
+      "End": "48d190fd766b477f9e7eecdbc8ac630e",
+      "Id": "bdcb9f07bf3b4bb1a810dc38207f87fb"
+    },
+    {
+      "Start": "67c5d23fc4784f64aac39d42afc757c4",
+      "End": "74955da9f3174458a6b9ecb406b9a957",
+      "Id": "6f44cf1e0eba4091b35d63157f130756"
+    },
+    {
+      "Start": "67c5d23fc4784f64aac39d42afc757c4",
+      "End": "c49c2fde495b4fd284769e53d97ba566",
+      "Id": "dc506cb3b7394151bcaa8695bd87a5cf"
+    },
+    {
+      "Start": "67c5d23fc4784f64aac39d42afc757c4",
+      "End": "acd1e626cbbd41a1a2245e0af842f0a9",
+      "Id": "8ac1ecc8a3d542a5a1b3c6e715327e6b"
+    },
+    {
+      "Start": "8dcd8f3469e546d2879c219474ae01fa",
+      "End": "4a6e127e0c84424da6be442205b1e982",
+      "Id": "33fc2616596046d5977a37b65e281e7b"
+    },
+    {
+      "Start": "bbcf7c54af5c473297897b51e6f951c7",
+      "End": "3443ebc07623434092903bac798bdf12",
+      "Id": "71f5356f081c46cd91af796922f27772"
+    },
+    {
+      "Start": "dc11bdfa377848428e64dc8c078c8a73",
+      "End": "c43abc95bab6496496846e1c2551bfc6",
+      "Id": "9dc075f968ee4d99b75103978f286f82"
+    },
+    {
+      "Start": "b94a4d6afc0246b48e49d1b395bd0d19",
+      "End": "50ebfba946054ce7ad1059f066477c64",
+      "Id": "d836d3c902464adf9e2f82e6f5fe68d5"
+    },
+    {
+      "Start": "b0f797ccf3fc419d836ecd4723413fa1",
+      "End": "f153f173419f4088b8ca60a0df920102",
+      "Id": "69ed8fd29d1042719480ab5246b22d82"
+    },
+    {
+      "Start": "eb16b5907be540beafab1aa95f14eec6",
+      "End": "344f654826b04c5e86f00aff365547ef",
+      "Id": "353ccb3391794141a9af4f9b44ed341d"
+    },
+    {
+      "Start": "d834a488edb64bd2a8f32250822e3e83",
+      "End": "5cf66972df3243ca9d2d561082de2dba",
+      "Id": "2986c590829d43e8851c40ee11186d55"
+    },
+    {
+      "Start": "198aac10fb6346cd8f7e6c158fe0cf0e",
+      "End": "07efe1b97c9041b5a186a0fa3c98ea17",
+      "Id": "8370fb08aced456bbae618c3f75464c4"
+    },
+    {
+      "Start": "5a68a75e6f474aef8ade8e6550bc6316",
+      "End": "d0a6fc0f88d541cfa742b0157fcc1907",
+      "Id": "8c64a558478e4043a6bc92d62ad7c6a6"
+    },
+    {
+      "Start": "e2bc9fea319b4ed298065aac0cc9d355",
+      "End": "ce1b81ce5b984ec99c75558619d3847e",
+      "Id": "622d5033b91d4cdb95534fc4b59eb64e"
+    },
+    {
+      "Start": "59827a963702495baaf9fa57a0d027eb",
+      "End": "58e9366e38c24c54a95fd26958eef358",
+      "Id": "c3b2f573ee0d41e58b06181766cb8c2e"
+    },
+    {
+      "Start": "f186ce77c48e4bde8ca16a8fd254735d",
+      "End": "4665739599fb4ad8a7a51e124907c4d9",
+      "Id": "fda0f1b39bf14ff694bbc6ca69153336"
+    },
+    {
+      "Start": "e77328670d6847949a2c7c54d38607a5",
+      "End": "e612fb543c674aec9edf9551292b55ce",
+      "Id": "3f878680d7d74cdcae58fb54aaa8134d"
+    },
+    {
+      "Start": "e9b70f3bb8b440ea982cc4550d57f4a0",
+      "End": "595d60fe431047c68da35b067bebb188",
+      "Id": "56b2d9ba799f40abb18707ccc34264a6"
+    },
+    {
+      "Start": "e6aba09cde404c7587776ed41c076255",
+      "End": "2981ff30925c42cd80638c1971942171",
+      "Id": "54a2b9598fd849b5acbe0ca8df1c09fa"
+    },
+    {
+      "Start": "9872365155e34b46b6fa42f4393f8167",
+      "End": "07a19502ff724fc3b3367f6c5f8b0a7c",
+      "Id": "f53b341e006e4e24ba1d85db15d401cc"
+    },
+    {
+      "Start": "9872365155e34b46b6fa42f4393f8167",
+      "End": "a033f16122104105b66aa6a8cf0076dd",
+      "Id": "dd2d25a6ac064160b4f00827ecc06a23"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Structural Analysis for Dynamo",
+      "Version": "2.11.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a79ae8cec67844e6971c5bdc85730531"
+      ]
+    }
+  ],
+  "ExtensionWorkspaceData": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.11.0.4533",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 6.7036614418029785,
+      "EyeY": 2.0778868198394775,
+      "EyeZ": -3.253978967666626,
+      "LookX": -8.4437093734741211,
+      "LookY": -1.8867771625518799,
+      "LookZ": 1.6122283935546875,
+      "UpX": -5.89687806495931E-06,
+      "UpY": 1.0,
+      "UpZ": -9.20554157346487E-06
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "8c12fcfd10ed4151a9eec99916f4b2ff",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 343.03412801166428,
+        "Y": -79.831544748485868
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "2916341fe7254f179a9023966e620702",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -42.512629335333486,
+        "Y": -86.471933944452687
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "2f40a271b8be41bbac72866f5c8ac0d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 208.5244523018406,
+        "Y": -84.374541245869793
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "709ef003446c402b953c1af75db8d4e2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 212.06378013054496,
+        "Y": 0.56932664303556635
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Transpose",
+        "Id": "7aa2a856f5ef40268ca4a790dade4f66",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 614.24938659344286,
+        "Y": -75.649111870783457
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NodeNumber",
+        "Id": "78bb249da4274619b73fd31b91089b0d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 826.92948368915086,
+        "Y": -83.024462326549127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NodeX",
+        "Id": "9de7a0d64caf4f308cd7d21f467384b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 950.92948368915086,
+        "Y": -83.024462326549127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NodeY",
+        "Id": "2603795e4dc94e80a9fa16eb44bade87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1074.9294836891509,
+        "Y": -83.024462326549127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NodeZ",
+        "Id": "eba86a943ed54190a31c38f1cc489b6f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1198.9294836891509,
+        "Y": -83.024462326549127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.ByCoordinates",
+        "Id": "3a19e0368d374e4ea1cc7506357ad1e4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1437.6369236725052,
+        "Y": -107.47019619907124
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "AnalyticalNode.ByPoint",
+        "Id": "a79ae8cec67844e6971c5bdc85730531",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1620.1419746063423,
+        "Y": -110.05310266758289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (Lungime)",
+        "Id": "a18cd55bdf944dacb5e5897fc8cd1230",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -369.164518849119,
+        "Y": 212.283871218287
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "5f97d96cbc0f41fa92cb4f4d5cd53f75",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -112.424950781266,
+        "Y": 133.504357384277
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Range",
+        "Id": "5bf74118d6f94ef7bec165fe2b5097f3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -18.272127908358613,
+        "Y": 201.91558722117645
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (pas deschidere)",
+        "Id": "44fa4059041c45dc9bb9065853b5a8e7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -370.59398090168,
+        "Y": 290.969388632742
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (Latime)",
+        "Id": "1ff56d1593764832b2861cda5011f70e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -369.81319303181397,
+        "Y": 506.49961804187706
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "00219e66e3894145b2013f7ee910999b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -113.07362496396098,
+        "Y": 427.72010420786705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Range",
+        "Id": "d826d6d50d704955a0250552af4e4c5c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -20.333286250839478,
+        "Y": 413.42523744804021
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (pas travee)",
+        "Id": "3f8add0dc1bb4777860d21f2db66636d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -371.242655084375,
+        "Y": 585.18513545633209
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Range",
+        "Id": "e116e84a83b34e28b53be2f20f0bf8d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -22.237913184069043,
+        "Y": 720.90934416229356
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (pas nivel)",
+        "Id": "86dc770c004e4e0a97a92d282e89f6a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -362.85847368568579,
+        "Y": 927.56690125737794
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider (Inaltime)",
+        "Id": "55932b091ffe432989d54c536241c36d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -359.01458390713339,
+        "Y": 767.99805502221056
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "e242a1c6230947f5a10eeda20fecd19d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -124.00486537320313,
+        "Y": 707.3267491331361
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "03d62185daa0418180f8d317af267143",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 293.98426898473866,
+        "Y": 431.37280056332321
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "17a36ce833a649d1a0b9862273f8abbb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 822.0798911976118,
+        "Y": 342.31269306859735
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "208ad7bd1f8d43968dd16a78fabe2d95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 568.03811396504,
+        "Y": 537.4979228316173
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPerimeterPoints",
+        "Id": "1178da6de9204d87a5e186aab27371b1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1142.9703976052481,
+        "Y": 468.2771587340473
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "70d88c1bc99e4990adcfdfd5ddb48760",
+        "Title": "Nodes\r\n",
+        "Nodes": [
+          "78bb249da4274619b73fd31b91089b0d",
+          "9de7a0d64caf4f308cd7d21f467384b0",
+          "2603795e4dc94e80a9fa16eb44bade87",
+          "eba86a943ed54190a31c38f1cc489b6f"
+        ],
+        "Left": 816.92948368915086,
+        "Top": -179.02446232654913,
+        "Width": 516.0,
+        "Height": 200.0,
+        "FontSize": 36.0,
+        "InitialTop": -83.024462326549127,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7e35378c990a43f6a972a68b2a7268bf",
+        "Title": "X",
+        "Nodes": [
+          "a18cd55bdf944dacb5e5897fc8cd1230",
+          "5f97d96cbc0f41fa92cb4f4d5cd53f75",
+          "5bf74118d6f94ef7bec165fe2b5097f3",
+          "44fa4059041c45dc9bb9065853b5a8e7"
+        ],
+        "Left": -380.59398090168,
+        "Top": 80.504357384277,
+        "Width": 534.32185299332139,
+        "Height": 278.465031248465,
+        "FontSize": 36.0,
+        "InitialTop": 133.504357384277,
+        "InitialHeight": 302.465031248465,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "af5b32d4e4444c789426ec3a43a8fd72",
+        "Title": "Y",
+        "Nodes": [
+          "1ff56d1593764832b2861cda5011f70e",
+          "00219e66e3894145b2013f7ee910999b",
+          "d826d6d50d704955a0250552af4e4c5c",
+          "3f8add0dc1bb4777860d21f2db66636d"
+        ],
+        "Left": -381.242655084375,
+        "Top": 360.42523744804021,
+        "Width": 532.9093688335355,
+        "Height": 292.75989800829188,
+        "FontSize": 36.0,
+        "InitialTop": 413.42523744804021,
+        "InitialHeight": 316.75989800829188,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "50b85c36aba44b418580924defb1998f",
+        "Title": "Z",
+        "Nodes": [
+          "55932b091ffe432989d54c536241c36d",
+          "e242a1c6230947f5a10eeda20fecd19d",
+          "e116e84a83b34e28b53be2f20f0bf8d3",
+          "86dc770c004e4e0a97a92d282e89f6a7"
+        ],
+        "Left": -372.85847368568579,
+        "Top": 654.3267491331361,
+        "Width": 522.62056050161675,
+        "Height": 341.24015212424183,
+        "FontSize": 36.0,
+        "InitialTop": 707.3267491331361,
+        "InitialHeight": 365.24015212424194,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 49.521860484408705,
+    "Y": -323.33909477387886,
+    "Zoom": 0.69815645959861528
+  }
+}
