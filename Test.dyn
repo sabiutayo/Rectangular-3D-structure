@@ -723,7 +723,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\nxCoords =[]\r\nyCoords =[]\r\nzCoords =[]\r\npoints =[]\r\n# Generate X coords\r\nfor i in range(len(IN[1]*len(IN[2]))):\r\n    for j in IN[0]:\r\n        xCoords.append(j)\r\n# Generate Y coords        \r\nfor k in range(len(IN[2])):\r\n\tfor i in IN[1]:\r\n\t\tfor j in range(len(IN[0])):\r\n\t\t\tyCoords.append(i)\r\n# Generate Z coords\t\t\t\r\nfor k in IN[2]:\r\n\tfor j in range(len(IN[0])*len(IN[1])):\r\n\t\tzCoords.append(k)\r\n\r\n#Generate points\r\nfor i in range(0,(len(IN[0])*len(IN[1])*len(IN[2]))):\r\n    points.append(Point.ByCoordinates(xCoords[i], yCoords[i], zCoords[i]))\r\n\r\n\r\n\r\n#Start points\r\nstartPoints = []\r\n\r\n#X direction starting points\r\nstartStepX = len(IN[0])\r\nstartCounterX = 1\r\nfor i, val in enumerate(points[0:(len(points)-1)]):\r\n    if startCounterX == (startStepX):\r\n        startCounterX = 1\r\n        continue\r\n    startPoints.append(val)\r\n    startCounterX += 1\r\n#Y direction starting points\r\nstartStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nlastPoints = len(points)-len(IN[0])\r\nstartCounterY = 1\r\nfor i, val in enumerate(points[0:lastPoints]):\r\n    if (startCounterY > startStepY and startCounterY <= finalStepY):\r\n        startCounterY += 1\r\n        if startCounterY > finalStepY:\r\n            startCounterY = 1\r\n        continue    \r\n    startPoints.append(val)\r\n    startCounterY += 1\r\n#Z direction starting points\r\nlastPointsZ = len(IN[0])*len(IN[1])*len(IN[2])-len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[0:lastPointsZ]):\r\n    startPoints.append(val)\r\n\r\n#End points\r\nendPoints = []\r\n\r\n#X direction ending points\r\nendStepX = len(IN[0])\r\nendCounterX = 1\r\nfor i, val in enumerate(points[1:len(points)]):\r\n    if endCounterX == (endStepX):\r\n        endCounterX = 1\r\n        continue\r\n    endPoints.append(val)\r\n    endCounterX += 1\r\n#Y direction ending points\r\nendStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nfirstPoints = len(IN[0])\r\nendCounterY = 1\r\nfor i, val in enumerate(points[firstPoints:len(points)]):\r\n    if (endCounterY > startStepY and endCounterY <= finalStepY):\r\n        endCounterY += 1\r\n        if endCounterY > finalStepY:\r\n            endCounterY = 1\r\n        continue    \r\n    endPoints.append(val)\r\n    endCounterY += 1\r\n#Z direction ending points\r\nfirstPointsZ = len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[firstPointsZ:len(points)]):\r\n    endPoints.append(val)\r\n\r\n\r\n#Generate lines from points\r\nlines = []\r\n\r\ns = 0\r\ne = 0\r\nfor i in range(0,len(startPoints)):\r\n    lines.append(Line.ByStartPointEndPoint(startPoints[s], endPoints[e]))\r\n    s += 1\r\n    e += 1\r\n\r\n#Generate surfaces\r\nsurfaces = []\r\nresetline = 0\r\nresetcolumn = 0\r\nendline = len(IN[0])-1\r\nendcolumn = len(IN[0])*len(IN[1])-len(IN[0])\r\nendlist = len(points)\r\nfor i, p in enumerate(points[0:len(points)-endline-1]):\r\n    if resetline == endline or resetline == endcolumn:\r\n        resetline = 0\r\n        resetcolumn = 0\r\n        continue   \r\n    resetline = resetline + 1\r\n    resetcolumn = resetcolumn + 1\r\n    surfaces.append(Surface.ByPerimeterPoints([\r\n    points[i],\r\n    points[i+1],\r\n    points[i+len(IN[1])+1],\r\n    points[i+len(IN[1])], \r\n    ]))\r\n# Assign your output to the OUT variable.\r\nOUT = [points, lines, surfaces]",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\nxCoords =[]\r\nyCoords =[]\r\nzCoords =[]\r\npoints =[]\r\n# Generate X coords\r\nfor i in range(len(IN[1]*len(IN[2]))):\r\n    for j in IN[0]:\r\n        xCoords.append(j)\r\n# Generate Y coords        \r\nfor k in range(len(IN[2])):\r\n\tfor i in IN[1]:\r\n\t\tfor j in range(len(IN[0])):\r\n\t\t\tyCoords.append(i)\r\n# Generate Z coords\t\t\t\r\nfor k in IN[2]:\r\n\tfor j in range(len(IN[0])*len(IN[1])):\r\n\t\tzCoords.append(k)\r\n\r\n#Generate points\r\nfor i in range(0,(len(IN[0])*len(IN[1])*len(IN[2]))):\r\n    points.append(Point.ByCoordinates(xCoords[i], yCoords[i], zCoords[i]))\r\n\r\n\r\n\r\n#Start points\r\nstartPoints = []\r\n\r\n#X direction starting points\r\nstartStepX = len(IN[0])\r\nstartCounterX = 1\r\nfor i, val in enumerate(points[0:(len(points)-1)]):\r\n    if startCounterX == (startStepX):\r\n        startCounterX = 1\r\n        continue\r\n    startPoints.append(val)\r\n    startCounterX += 1\r\n#Y direction starting points\r\nstartStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nlastPoints = len(points)-len(IN[0])\r\nstartCounterY = 1\r\nfor i, val in enumerate(points[0:lastPoints]):\r\n    if (startCounterY > startStepY and startCounterY <= finalStepY):\r\n        startCounterY += 1\r\n        if startCounterY > finalStepY:\r\n            startCounterY = 1\r\n        continue    \r\n    startPoints.append(val)\r\n    startCounterY += 1\r\n#Z direction starting points\r\nlastPointsZ = len(IN[0])*len(IN[1])*len(IN[2])-len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[0:lastPointsZ]):\r\n    startPoints.append(val)\r\n\r\n#End points\r\nendPoints = []\r\n\r\n#X direction ending points\r\nendStepX = len(IN[0])\r\nendCounterX = 1\r\nfor i, val in enumerate(points[1:len(points)]):\r\n    if endCounterX == (endStepX):\r\n        endCounterX = 1\r\n        continue\r\n    endPoints.append(val)\r\n    endCounterX += 1\r\n#Y direction ending points\r\nendStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nfirstPoints = len(IN[0])\r\nendCounterY = 1\r\nfor i, val in enumerate(points[firstPoints:len(points)]):\r\n    if (endCounterY > startStepY and endCounterY <= finalStepY):\r\n        endCounterY += 1\r\n        if endCounterY > finalStepY:\r\n            endCounterY = 1\r\n        continue    \r\n    endPoints.append(val)\r\n    endCounterY += 1\r\n#Z direction ending points\r\nfirstPointsZ = len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[firstPointsZ:len(points)]):\r\n    endPoints.append(val)\r\n\r\n\r\n#Generate lines from points\r\nlines = []\r\n\r\ns = 0\r\ne = 0\r\nfor i in range(0,len(startPoints)):\r\n    lines.append(Line.ByStartPointEndPoint(startPoints[s], endPoints[e]))\r\n    s += 1\r\n    e += 1\r\n\r\n#Generate horizontal surfaces\r\nsurfacesH = []\r\nendLine = len(IN[0])\r\nendColumn = len(IN[0])*len(IN[1])-len(IN[0])\r\nendList = len(points)-len(IN[0])-1\r\nlineCounter = 1\r\ncolumnCounter = 1\r\n\r\nfor i, p in enumerate(points[0:endList]):\r\n\r\n\r\n    if lineCounter < endLine and columnCounter < endColumn:\r\n        if lineCounter > endLine:     \r\n            lineCounter = 1\r\n            columnCounter += 1\r\n            continue\r\n            \r\n        if columnCounter > endColumn:     \r\n            columnCounter = 1\r\n            continue \r\n\r\n        if lineCounter <= endLine:\r\n            lineCounter += 1\r\n            \r\n        if columnCounter <= endColumn :\r\n            columnCounter += 1\r\n    \r\n       \r\n    surfacesH.append(\r\n    #Surface.ByPerimeterPoints(\r\n    [\r\n    points[i],\r\n    points[i+1],\r\n    points[i+len(IN[0])+1],\r\n    points[i+len(IN[0])]\r\n    ]\r\n   # )\r\n    )\r\n# Assign your output to the OUT variable.\r\nOUT = [points, lines, surfacesH]",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "03d62185daa0418180f8d317af267143",
@@ -816,15 +816,15 @@
       "WasExecuted": true,
       "Camera": {
         "Name": "208ad7bd-1f8d-4396-8dd1-6a78fabe2d95 Preview",
-        "EyeX": 6.4860007762908936,
-        "EyeY": 3.2400854825973511,
-        "EyeZ": 1.5384699106216431,
-        "LookX": -5.5285730361938477,
-        "LookY": -1.3990304470062256,
-        "LookZ": -3.564157247543335,
-        "UpX": 0.0054618897847831249,
-        "UpY": 0.99997895956039429,
-        "UpZ": 0.0035211576614528894
+        "EyeX": 4.5269098281860352,
+        "EyeY": 0.86477792263031006,
+        "EyeZ": 0.037293910980224609,
+        "LookX": -4.3797364234924316,
+        "LookY": -1.2500303983688354,
+        "LookZ": -2.8961324691772461,
+        "UpX": -0.014724192209541798,
+        "UpY": 0.9998442530632019,
+        "UpZ": -0.0097371460869908333
       },
       "NodeType": "ExtensionNode",
       "Id": "208ad7bd1f8d43968dd16a78fabe2d95",
@@ -882,6 +882,16 @@
       ],
       "Replication": "Auto",
       "Description": "Create a Polygon Surface connecting input Points in a closed Polygon and patching it.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "5fb110ea1c314f5490edbf6f6c47ef01",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -1003,7 +1013,7 @@
     {
       "Start": "9872365155e34b46b6fa42f4393f8167",
       "End": "a033f16122104105b66aa6a8cf0076dd",
-      "Id": "dd2d25a6ac064160b4f00827ecc06a23"
+      "Id": "22eff5a3e06e4159a2b268df20dbf03b"
     }
   ],
   "Dependencies": [],
@@ -1030,15 +1040,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 6.7036614418029785,
-      "EyeY": 2.0778868198394775,
-      "EyeZ": -3.253978967666626,
-      "LookX": -8.4437093734741211,
-      "LookY": -1.8867771625518799,
-      "LookZ": 1.6122283935546875,
-      "UpX": -5.89687806495931E-06,
-      "UpY": 1.0,
-      "UpZ": -9.20554157346487E-06
+      "EyeX": -1.564915657043457,
+      "EyeY": 1.1944544315338135,
+      "EyeZ": 1.3892183303833008,
+      "LookX": 14.644893646240234,
+      "LookY": -2.6499719619750977,
+      "LookZ": -18.621110916137695,
+      "UpX": -0.064626522362232208,
+      "UpY": 0.99452227354049683,
+      "UpZ": 0.082151509821414948
     },
     "NodeViews": [
       {
@@ -1278,8 +1288,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 293.98426898473866,
-        "Y": 431.37280056332321
+        "X": 294.91058952289188,
+        "Y": 408.2174114384178
       },
       {
         "ShowGeometry": true,
@@ -1288,8 +1298,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 822.0798911976118,
-        "Y": 342.31269306859735
+        "X": 555.40080799399186,
+        "Y": 388.08596854384558
       },
       {
         "ShowGeometry": true,
@@ -1298,8 +1308,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 568.03811396504,
-        "Y": 537.4979228316173
+        "X": 626.63614074230043,
+        "Y": 395.33198358210456
       },
       {
         "ShowGeometry": true,
@@ -1310,6 +1320,16 @@
         "Excluded": false,
         "X": 1142.9703976052481,
         "Y": 468.2771587340473
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "5fb110ea1c314f5490edbf6f6c47ef01",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -276.0,
+        "Y": 616.0
       }
     ],
     "Annotations": [
@@ -1390,8 +1410,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 49.521860484408705,
-    "Y": -323.33909477387886,
-    "Zoom": 0.69815645959861528
+    "X": 212.96990943105544,
+    "Y": -226.07320355574353,
+    "Zoom": 0.65203981630037522
   }
 }
