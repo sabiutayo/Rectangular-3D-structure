@@ -721,56 +721,6 @@
       "Description": "Creates a number."
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\nxCoords =[]\r\nyCoords =[]\r\nzCoords =[]\r\npoints =[]\r\n# Generate X coords\r\nfor i in range(len(IN[1]*len(IN[2]))):\r\n    for j in IN[0]:\r\n        xCoords.append(j)\r\n# Generate Y coords        \r\nfor k in range(len(IN[2])):\r\n\tfor i in IN[1]:\r\n\t\tfor j in range(len(IN[0])):\r\n\t\t\tyCoords.append(i)\r\n# Generate Z coords\t\t\t\r\nfor k in IN[2]:\r\n\tfor j in range(len(IN[0])*len(IN[1])):\r\n\t\tzCoords.append(k)\r\n\r\n#Generate points\r\nfor i in range(0,(len(IN[0])*len(IN[1])*len(IN[2]))):\r\n    points.append(Point.ByCoordinates(xCoords[i], yCoords[i], zCoords[i]))\r\n\r\n\r\n\r\n#Start points\r\nstartPoints = []\r\n\r\n#X direction starting points\r\nstartStepX = len(IN[0])\r\nstartCounterX = 1\r\nfor i, val in enumerate(points[0:(len(points)-1)]):\r\n    if startCounterX == (startStepX):\r\n        startCounterX = 1\r\n        continue\r\n    startPoints.append(val)\r\n    startCounterX += 1\r\n#Y direction starting points\r\nstartStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nlastPoints = len(points)-len(IN[0])\r\nstartCounterY = 1\r\nfor i, val in enumerate(points[0:lastPoints]):\r\n    if (startCounterY > startStepY and startCounterY <= finalStepY):\r\n        startCounterY += 1\r\n        if startCounterY > finalStepY:\r\n            startCounterY = 1\r\n        continue    \r\n    startPoints.append(val)\r\n    startCounterY += 1\r\n#Z direction starting points\r\nlastPointsZ = len(IN[0])*len(IN[1])*len(IN[2])-len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[0:lastPointsZ]):\r\n    startPoints.append(val)\r\n\r\n#End points\r\nendPoints = []\r\n\r\n#X direction ending points\r\nendStepX = len(IN[0])\r\nendCounterX = 1\r\nfor i, val in enumerate(points[1:len(points)]):\r\n    if endCounterX == (endStepX):\r\n        endCounterX = 1\r\n        continue\r\n    endPoints.append(val)\r\n    endCounterX += 1\r\n#Y direction ending points\r\nendStepY = len(IN[0])*len(IN[1])-len(IN[0])\r\nfinalStepY = len(IN[0])*len(IN[1]) \r\nfirstPoints = len(IN[0])\r\nendCounterY = 1\r\nfor i, val in enumerate(points[firstPoints:len(points)]):\r\n    if (endCounterY > startStepY and endCounterY <= finalStepY):\r\n        endCounterY += 1\r\n        if endCounterY > finalStepY:\r\n            endCounterY = 1\r\n        continue    \r\n    endPoints.append(val)\r\n    endCounterY += 1\r\n#Z direction ending points\r\nfirstPointsZ = len(IN[0])*len(IN[1])\r\nfor i, val in enumerate(points[firstPointsZ:len(points)]):\r\n    endPoints.append(val)\r\n\r\n\r\n#Generate lines from points\r\nlines = []\r\n\r\ns = 0\r\ne = 0\r\nfor i in range(0,len(startPoints)):\r\n    lines.append(Line.ByStartPointEndPoint(startPoints[s], endPoints[e]))\r\n    s += 1\r\n    e += 1\r\n\r\n#Generate horizontal surfaces\r\nsurfacesH = []\r\nendLine = len(IN[0])\r\nendColumn = len(IN[0])*len(IN[1])-len(IN[0])\r\nendList = len(points)-len(IN[0])-1\r\nlineCounter = 1\r\ncolumnCounter = 1\r\n\r\nfor i, p in enumerate(points[0:endList]):\r\n\r\n\r\n    if lineCounter < endLine and columnCounter < endColumn:\r\n        if lineCounter > endLine:     \r\n            lineCounter = 1\r\n            columnCounter += 1\r\n            continue\r\n            \r\n        if columnCounter > endColumn:     \r\n            columnCounter = 1\r\n            continue \r\n\r\n        if lineCounter <= endLine:\r\n            lineCounter += 1\r\n            \r\n        if columnCounter <= endColumn :\r\n            columnCounter += 1\r\n    \r\n       \r\n    surfacesH.append(\r\n    #Surface.ByPerimeterPoints(\r\n    [\r\n    points[i],\r\n    points[i+1],\r\n    points[i+len(IN[0])+1],\r\n    points[i+len(IN[0])]\r\n    ]\r\n   # )\r\n    )\r\n# Assign your output to the OUT variable.\r\nOUT = [points, lines, surfacesH]",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "03d62185daa0418180f8d317af267143",
-      "Inputs": [
-        {
-          "Id": "344f654826b04c5e86f00aff365547ef",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "ce1b81ce5b984ec99c75558619d3847e",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "4665739599fb4ad8a7a51e124907c4d9",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "9872365155e34b46b6fa42f4393f8167",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
       "Code": "//points\ninput[0];\n//lines\ninput[1];\n//surfaces\n//output[2];",
@@ -810,27 +760,146 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "5fb110ea1c314f5490edbf6f6c47ef01",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "22e35d914925405ba13a7f318f85b43c",
+      "Inputs": [
+        {
+          "Id": "d39dbc5f24984d998e5e40d18492681a",
+          "Name": "script",
+          "Description": "Python script to run.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5755aaf1449149f88c6a0c612815116c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fe0c199f082a41e6afcb3cb3ad8ec126",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "179695cb14b14cc6beacbafc04348d3b",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff48de4c87bf4d589010d3803da25c63",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs a Python script from a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "D:\\KITURI\\JAva\\Projects\\Dynamo\\Rectangular-3D-structure\\Start\\structure.py",
+      "InputValue": "Start\\structure.py",
+      "NodeType": "ExtensionNode",
+      "Id": "33a554ad565b4e299a358d7232036538",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5ef27dd1a224479b9f64c965f6c4bd89",
+          "Name": "",
+          "Description": "File Path",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its file path."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.ReadText@var",
+      "Id": "97508a8cf3494d148cd46fb7d9880cdc",
+      "Inputs": [
+        {
+          "Id": "65a32c5a8ed244dab755f9719ec31f7d",
+          "Name": "file",
+          "Description": "File object to read text from\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fa18c696254b455787fd5f99c653f92e",
+          "Name": "string",
+          "Description": "Contents of the text file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Reads a text file and returns the contents as a string.\n\nFileSystem.ReadText (file: var): string"
+    },
+    {
       "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
       "WatchWidth": 200.0,
       "WatchHeight": 200.0,
       "WasExecuted": true,
       "Camera": {
-        "Name": "208ad7bd-1f8d-4396-8dd1-6a78fabe2d95 Preview",
-        "EyeX": 4.5269098281860352,
-        "EyeY": 0.86477792263031006,
-        "EyeZ": 0.037293910980224609,
-        "LookX": -4.3797364234924316,
-        "LookY": -1.2500303983688354,
-        "LookZ": -2.8961324691772461,
-        "UpX": -0.014724192209541798,
-        "UpY": 0.9998442530632019,
-        "UpZ": -0.0097371460869908333
+        "Name": "fd632926-68f3-4d55-b594-90610d8d865c Preview",
+        "EyeX": -2.6710562705993652,
+        "EyeY": 2.09814453125,
+        "EyeZ": 1.173980712890625,
+        "LookX": 5.6848797798156738,
+        "LookY": -2.0606279373168945,
+        "LookZ": -4.448054313659668,
+        "UpX": 0.048810172826051712,
+        "UpY": 0.99807769060134888,
+        "UpZ": -0.0381908193230629
       },
       "NodeType": "ExtensionNode",
-      "Id": "208ad7bd1f8d43968dd16a78fabe2d95",
+      "Id": "fd63292668f34d55b59490610d8d865c",
       "Inputs": [
         {
-          "Id": "a033f16122104105b66aa6a8cf0076dd",
+          "Id": "c428f7dd95274f29b2ded586c0ee4c2d",
           "Name": "",
           "Description": "Incoming geometry objects.",
           "UsingDefaultValue": false,
@@ -841,7 +910,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4a1e04a92566479cbfeadeb00f9d13b4",
+          "Id": "b3fe659d42b34e0d841721dc1abc911c",
           "Name": "",
           "Description": "Incoming geometry objects.",
           "UsingDefaultValue": false,
@@ -852,46 +921,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Shows a dynamic preview of geometry."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
-      "Id": "1178da6de9204d87a5e186aab27371b1",
-      "Inputs": [
-        {
-          "Id": "485894108aca4a708c6a73ca5b8d296e",
-          "Name": "points",
-          "Description": "Point[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "d37ab02bc58946bc8f4d972524dde7ac",
-          "Name": "Surface",
-          "Description": "Surface",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Create a Polygon Surface connecting input Points in a closed Polygon and patching it.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "",
-      "Id": "5fb110ea1c314f5490edbf6f6c47ef01",
-      "Inputs": [],
-      "Outputs": [],
-      "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -957,8 +986,8 @@
     },
     {
       "Start": "eb16b5907be540beafab1aa95f14eec6",
-      "End": "344f654826b04c5e86f00aff365547ef",
-      "Id": "353ccb3391794141a9af4f9b44ed341d"
+      "End": "5755aaf1449149f88c6a0c612815116c",
+      "Id": "da1eba2b206a4fdf988add7137642bc0"
     },
     {
       "Start": "d834a488edb64bd2a8f32250822e3e83",
@@ -977,8 +1006,8 @@
     },
     {
       "Start": "e2bc9fea319b4ed298065aac0cc9d355",
-      "End": "ce1b81ce5b984ec99c75558619d3847e",
-      "Id": "622d5033b91d4cdb95534fc4b59eb64e"
+      "End": "fe0c199f082a41e6afcb3cb3ad8ec126",
+      "Id": "d9c77751530f43d3aa7ff9661a63155e"
     },
     {
       "Start": "59827a963702495baaf9fa57a0d027eb",
@@ -987,8 +1016,8 @@
     },
     {
       "Start": "f186ce77c48e4bde8ca16a8fd254735d",
-      "End": "4665739599fb4ad8a7a51e124907c4d9",
-      "Id": "fda0f1b39bf14ff694bbc6ca69153336"
+      "End": "179695cb14b14cc6beacbafc04348d3b",
+      "Id": "9f61d776fd094fb2ade0662bdda41780"
     },
     {
       "Start": "e77328670d6847949a2c7c54d38607a5",
@@ -1006,14 +1035,24 @@
       "Id": "54a2b9598fd849b5acbe0ca8df1c09fa"
     },
     {
-      "Start": "9872365155e34b46b6fa42f4393f8167",
+      "Start": "ff48de4c87bf4d589010d3803da25c63",
       "End": "07a19502ff724fc3b3367f6c5f8b0a7c",
-      "Id": "f53b341e006e4e24ba1d85db15d401cc"
+      "Id": "107eec8de3444b9c80e5138fcc4e3022"
     },
     {
-      "Start": "9872365155e34b46b6fa42f4393f8167",
-      "End": "a033f16122104105b66aa6a8cf0076dd",
-      "Id": "22eff5a3e06e4159a2b268df20dbf03b"
+      "Start": "ff48de4c87bf4d589010d3803da25c63",
+      "End": "c428f7dd95274f29b2ded586c0ee4c2d",
+      "Id": "e725815851614bedbb802633e31f22e4"
+    },
+    {
+      "Start": "5ef27dd1a224479b9f64c965f6c4bd89",
+      "End": "65a32c5a8ed244dab755f9719ec31f7d",
+      "Id": "045cfb5fee4247098f50d4f4e42a0214"
+    },
+    {
+      "Start": "fa18c696254b455787fd5f99c653f92e",
+      "End": "d39dbc5f24984d998e5e40d18492681a",
+      "Id": "0a00ee7150a44551b980054c466eafc7"
     }
   ],
   "Dependencies": [],
@@ -1040,15 +1079,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -1.564915657043457,
-      "EyeY": 1.1944544315338135,
-      "EyeZ": 1.3892183303833008,
-      "LookX": 14.644893646240234,
-      "LookY": -2.6499719619750977,
-      "LookZ": -18.621110916137695,
-      "UpX": -0.064626522362232208,
-      "UpY": 0.99452227354049683,
-      "UpZ": 0.082151509821414948
+      "EyeX": -2.3906409740448,
+      "EyeY": 4.148918628692627,
+      "EyeZ": 2.8502459526062012,
+      "LookX": 4.0997157096862793,
+      "LookY": -3.0655901432037354,
+      "LookZ": -4.445284366607666,
+      "UpX": 0.16973811388015747,
+      "UpY": 0.96814674139022827,
+      "UpZ": -0.18406786024570465
     },
     "NodeViews": [
       {
@@ -1283,43 +1322,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Python Script",
-        "Id": "03d62185daa0418180f8d317af267143",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 294.91058952289188,
-        "Y": 408.2174114384178
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Code Block",
         "Id": "17a36ce833a649d1a0b9862273f8abbb",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 555.40080799399186,
-        "Y": 388.08596854384558
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch 3D",
-        "Id": "208ad7bd1f8d43968dd16a78fabe2d95",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 626.63614074230043,
-        "Y": 395.33198358210456
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Surface.ByPerimeterPoints",
-        "Id": "1178da6de9204d87a5e186aab27371b1",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1142.9703976052481,
-        "Y": 468.2771587340473
+        "X": 554.97430247314321,
+        "Y": 707.13855605451135
       },
       {
         "ShowGeometry": true,
@@ -1330,6 +1339,46 @@
         "Excluded": false,
         "X": -276.0,
         "Y": 616.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
+        "Id": "22e35d914925405ba13a7f318f85b43c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 203.61559851954303,
+        "Y": 708.45337365634123
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "33a554ad565b4e299a358d7232036538",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -359.52943975957515,
+        "Y": 1041.779167757858
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.ReadText",
+        "Id": "97508a8cf3494d148cd46fb7d9880cdc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -202.55991675909212,
+        "Y": 1040.5395453064864
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "fd63292668f34d55b59490610d8d865c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 453.90383778777436,
+        "Y": 885.77609177335853
       }
     ],
     "Annotations": [
@@ -1410,8 +1459,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 212.96990943105544,
-    "Y": -226.07320355574353,
-    "Zoom": 0.65203981630037522
+    "X": 314.97042055138621,
+    "Y": -791.29619916333763,
+    "Zoom": 0.80547741956081387
   }
 }
