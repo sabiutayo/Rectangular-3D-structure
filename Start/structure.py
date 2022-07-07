@@ -114,15 +114,19 @@ lineCounter = 0
 columnCounter = 0
 
 for i, p in enumerate(points[0:endList]):
-    lineCounter += 1
-    columnCounter += 1
-    if lineCounter >= endLine:
-        lineCounter = 0
-        if startColumn <= columnCounter <= endColumn:
-            continue
-            if columnCounter > endColumn:
-                columnCounter = 0
 
+    if lineCounter < endLine:
+        if lineCounter != 0:
+            lineCounter += 1
+    if columnCounter < endColumn:
+        if columnCounter != 0:
+            columnCounter += 1
+    if lineCounter == endLine:
+        lineCounter = 0
+    if columnCounter == endColumn:
+        columnCounter = 0
+    if startColumn  <= columnCounter <= endColumn:
+        continue
 
     surfacesH.append(
         Surface.ByPerimeterPoints(
@@ -135,4 +139,8 @@ for i, p in enumerate(points[0:endList]):
         )
     )
 # Assign your output to the OUT variable.
-OUT = [points, lines, surfacesH]
+OUT = [
+    points,
+    lines,
+    surfacesH,
+]
