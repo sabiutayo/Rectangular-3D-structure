@@ -36,9 +36,21 @@ lineCounter = 0
 columnCounter = 0
 
 for i, p in enumerate(points[0:endList]):
-    if startColumn <= columnCounter < endColumn:
+    # skip left nodes
+    if columnCounter == endColumn - 1:
+        lineCounter = 0
+        columnCounter = 0
+        continue
+
+    if lineCounter == endLine - 1:
+        lineCounter = 0
         columnCounter += 1
-        lineCounter = -1
+        continue
+
+    # skip top nodes 0 ÷ endline-1
+    if lineCounter >= 0 and startColumn <= columnCounter < endColumn:
+        lineCounter += 1
+        columnCounter += 1
         continue
 
     if columnCounter <= endColumn:

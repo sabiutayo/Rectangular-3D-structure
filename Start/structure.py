@@ -6,11 +6,7 @@ clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
 
 # The inputs to this node will be stored as a list in the IN variables.
-IN = [
-    [0, 1, 2, 3],
-    [0, 1, 2, 3],
-    [0, 1, 2, 3],
-]
+
 dataEnteringNode = IN
 xCoords = []
 yCoords = []
@@ -115,18 +111,32 @@ columnCounter = 0
 
 for i, p in enumerate(points[0:endList]):
 
-    if lineCounter < endLine:
-        if lineCounter != 0:
-            lineCounter += 1
-    if columnCounter < endColumn:
-        if columnCounter != 0:
-            columnCounter += 1
-    if lineCounter == endLine:
+    # skip left nodes
+    if columnCounter == endColumn - 1:
         lineCounter = 0
-    if columnCounter == endColumn:
         columnCounter = 0
-    if startColumn  <= columnCounter <= endColumn:
         continue
+
+    if lineCounter == endLine - 1:
+        lineCounter = 0
+        columnCounter += 1
+        continue
+
+    # skip top nodes 0 ÷ endline-1
+    if lineCounter >= 0 and startColumn <= columnCounter < endColumn:
+        lineCounter += 1
+        columnCounter += 1
+        continue
+
+    if columnCounter <= endColumn:
+        if lineCounter < endLine:
+            lineCounter += 1
+        if columnCounter < endColumn:
+            columnCounter += 1
+        if lineCounter == endLine:
+            lineCounter = 0
+        if columnCounter == endColumn:
+            columnCounter = 0
 
     surfacesH.append(
         Surface.ByPerimeterPoints(
