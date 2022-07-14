@@ -1,3 +1,5 @@
+from itertools import islice
+
 IN = [
     [0, 1, 2, 3],
     [0, 1, 2, 3],
@@ -26,55 +28,51 @@ for k in IN[2]:
 for i in range(0, (len(IN[0]) * len(IN[1]) * len(IN[2]))):
     points.append([xCoords[i], yCoords[i], zCoords[i]])
 
-# Generate horizontal surfaces
-surfacesH = []
-endLine = len(IN[0])
-startColumn = len(IN[0]) * len(IN[1]) - len(IN[0])
-endColumn = len(IN[0]) * len(IN[1])
-endList = len(points) - len(IN[0]) - 1
-lineCounter = 0
-columnCounter = 0
+# Generate vertical surfaces
 
-for i, p in enumerate(points[0:endList]):
-    # skip left nodes
-    if columnCounter == endColumn - 1:
-        lineCounter = 0
-        columnCounter = 0
+surfacesV = []
+nFlor = len(IN[0]) * len(IN[1])
+nLine = len(IN[0])
+nColumn = len(IN[1])
+nLevel = len(IN[2])
+nStructure = len(IN[0]) * len(IN[1]) * len(IN[2])
+
+# Front surfaces
+# Front surfaces
+frontSurfaces = []
+skipFrom = nLine - 1
+skipFrom = nLine - 1
+florIncrement = 1
+for i, val in enumerate(points[0:nStructure - nFlor]):
+    if i >= skipFrom:
+        if i == nFlor * florIncrement - 1:
+            skipFrom = i + nLine
+            florIncrement += 1
         continue
+    if i < skipFrom:
+        frontSurfaces.append(
+           # Surface.ByPerimeterPoints(
+                [
+                    points[i],
+                    points[i + 1],
+                    points[i + nFlor + 1],
+                    points[i + nFlor]
+                ]
+           # )
+        )
 
-    if lineCounter == endLine - 1:
-        lineCounter = 0
-        columnCounter += 1
-        continue
+surfacesV.append(frontSurfaces)
 
-    # skip top nodes 0 ÷ endline-1
-    if lineCounter >= 0 and startColumn <= columnCounter < endColumn:
-        lineCounter += 1
-        columnCounter += 1
-        continue
+# Right surfaces
+rightSurfaces = []
+skipFrom = nLine - 1
+skipFrom = nLine - 1
 
-    if columnCounter <= endColumn:
-        if lineCounter < endLine:
-            lineCounter += 1
-        if columnCounter < endColumn:
-            columnCounter += 1
-        if lineCounter == endLine:
-            lineCounter = 0
-        if columnCounter == endColumn:
-            columnCounter = 0
 
-    surfacesH.append(
-        #        Surface.ByPerimeterPoints(
-        [
-            points[i],
-            points[i + 1],
-            points[i + len(IN[0]) + 1],
-            points[i + len(IN[0])]
-        ]
-        #        )
-    )
+surfacesV.append(rightSurfaces)
+
 # Assign your output to the OUT variable.
-for i, val in enumerate(surfacesH, 0):
+for i, val in enumerate(surfacesV, 0):
     print(val)
 
-OUT = [points, surfacesH]
+OUT = [points, surfacesV]

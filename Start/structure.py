@@ -148,9 +148,50 @@ for i, p in enumerate(points[0:endList]):
             ]
         )
     )
+
+# Generate vertical surfaces
+
+surfacesV = []
+nFlor = len(IN[0]) * len(IN[1])
+nLine = len(IN[0])
+nColumn = len(IN[1])
+nLevel = len(IN[2])
+nStructure = len(IN[0]) * len(IN[1]) * len(IN[2])
+
+# Front surfaces
+frontSurfaces = []
+skipFrom = nLine - 1
+skipFrom = nLine - 1
+florIncrement = 1
+for i, val in enumerate(points[0:nStructure - nFlor]):
+    if i >= skipFrom:
+        if i == nFlor * florIncrement - 1:
+            skipFrom = i + nLine
+            florIncrement += 1
+        continue
+    if i < skipFrom:
+        frontSurfaces.append(
+            Surface.ByPerimeterPoints(
+                [
+                    points[i],
+                    points[i + 1],
+                    points[i + nFlor + 1],
+                    points[i + nFlor]
+                ]
+            )
+        )
+
+surfacesV.append(frontSurfaces)
+
+# Right surfaces
+rightSurfaces = []
+
+
 # Assign your output to the OUT variable.
 OUT = [
     points,
     lines,
     surfacesH,
+    surfacesV,
+
 ]
