@@ -2,7 +2,7 @@
   "Uuid": "ad88cff6-1158-4f3d-8895-e8c995ffeb30",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "Test",
+  "Name": "Dynamo Test",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -303,7 +303,7 @@
         {
           "Id": "4a6e127e0c84424da6be442205b1e982",
           "Name": "x",
-          "Description": "double\nDefault value : 0",
+          "Description": "X coordinate\n\ndouble\nDefault value : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -312,7 +312,7 @@
         {
           "Id": "3443ebc07623434092903bac798bdf12",
           "Name": "y",
-          "Description": "double\nDefault value : 0",
+          "Description": "Y coordinate\n\ndouble\nDefault value : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -321,7 +321,7 @@
         {
           "Id": "c43abc95bab6496496846e1c2551bfc6",
           "Name": "z",
-          "Description": "double\nDefault value : 0",
+          "Description": "Z coordinate\n\ndouble\nDefault value : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -332,7 +332,7 @@
         {
           "Id": "2fa2881d8b9940a183f1ad27c159a4b3",
           "Name": "Point",
-          "Description": "Point",
+          "Description": "Point created by coordinates",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -760,7 +760,7 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "D:\\KITURI\\JAva\\Projects\\Dynamo\\Rectangular-3D-structure\\Start\\structure.py",
+      "HintPath": "E:\\IdeaProjects\\Dynamo\\Rectangular-3D-structure\\Start\\structure.py",
       "InputValue": "Start\\structure.py",
       "NodeType": "ExtensionNode",
       "Id": "33a554ad565b4e299a358d7232036538",
@@ -862,131 +862,166 @@
     {
       "Start": "f9339fc1949e49f3abf2854ebaa56e3b",
       "End": "6c8813e81bb2454499ef1a94c1343e39",
-      "Id": "496fb36440df4512a23db85c88ebece7"
+      "Id": "496fb36440df4512a23db85c88ebece7",
+      "IsHidden": "False"
     },
     {
       "Start": "98bbb3ce339c45099ef97c1d9041f163",
       "End": "502dd622c8424d14ab72377224d2fa2e",
-      "Id": "2de1ff8e2b3442e6bf693c9c2fb9f940"
+      "Id": "2de1ff8e2b3442e6bf693c9c2fb9f940",
+      "IsHidden": "False"
     },
     {
       "Start": "fd4fd872bec847abb058a9da3918d637",
       "End": "6a4d5879d27042ed80b42a331c35d7d5",
-      "Id": "e9b989312bc74890b743c89a2195211d"
+      "Id": "e9b989312bc74890b743c89a2195211d",
+      "IsHidden": "False"
     },
     {
       "Start": "67c5d23fc4784f64aac39d42afc757c4",
       "End": "48d190fd766b477f9e7eecdbc8ac630e",
-      "Id": "bdcb9f07bf3b4bb1a810dc38207f87fb"
+      "Id": "bdcb9f07bf3b4bb1a810dc38207f87fb",
+      "IsHidden": "False"
     },
     {
       "Start": "67c5d23fc4784f64aac39d42afc757c4",
       "End": "74955da9f3174458a6b9ecb406b9a957",
-      "Id": "6f44cf1e0eba4091b35d63157f130756"
+      "Id": "6f44cf1e0eba4091b35d63157f130756",
+      "IsHidden": "False"
     },
     {
       "Start": "67c5d23fc4784f64aac39d42afc757c4",
       "End": "c49c2fde495b4fd284769e53d97ba566",
-      "Id": "dc506cb3b7394151bcaa8695bd87a5cf"
+      "Id": "dc506cb3b7394151bcaa8695bd87a5cf",
+      "IsHidden": "False"
     },
     {
       "Start": "67c5d23fc4784f64aac39d42afc757c4",
       "End": "acd1e626cbbd41a1a2245e0af842f0a9",
-      "Id": "8ac1ecc8a3d542a5a1b3c6e715327e6b"
+      "Id": "8ac1ecc8a3d542a5a1b3c6e715327e6b",
+      "IsHidden": "False"
     },
     {
       "Start": "8dcd8f3469e546d2879c219474ae01fa",
       "End": "4a6e127e0c84424da6be442205b1e982",
-      "Id": "33fc2616596046d5977a37b65e281e7b"
+      "Id": "33fc2616596046d5977a37b65e281e7b",
+      "IsHidden": "False"
     },
     {
       "Start": "bbcf7c54af5c473297897b51e6f951c7",
       "End": "3443ebc07623434092903bac798bdf12",
-      "Id": "71f5356f081c46cd91af796922f27772"
+      "Id": "71f5356f081c46cd91af796922f27772",
+      "IsHidden": "False"
     },
     {
       "Start": "dc11bdfa377848428e64dc8c078c8a73",
       "End": "c43abc95bab6496496846e1c2551bfc6",
-      "Id": "9dc075f968ee4d99b75103978f286f82"
+      "Id": "9dc075f968ee4d99b75103978f286f82",
+      "IsHidden": "False"
     },
     {
       "Start": "b94a4d6afc0246b48e49d1b395bd0d19",
       "End": "50ebfba946054ce7ad1059f066477c64",
-      "Id": "d836d3c902464adf9e2f82e6f5fe68d5"
+      "Id": "d836d3c902464adf9e2f82e6f5fe68d5",
+      "IsHidden": "False"
     },
     {
       "Start": "b0f797ccf3fc419d836ecd4723413fa1",
       "End": "f153f173419f4088b8ca60a0df920102",
-      "Id": "69ed8fd29d1042719480ab5246b22d82"
+      "Id": "69ed8fd29d1042719480ab5246b22d82",
+      "IsHidden": "False"
     },
     {
       "Start": "eb16b5907be540beafab1aa95f14eec6",
       "End": "5755aaf1449149f88c6a0c612815116c",
-      "Id": "da1eba2b206a4fdf988add7137642bc0"
+      "Id": "da1eba2b206a4fdf988add7137642bc0",
+      "IsHidden": "False"
     },
     {
       "Start": "d834a488edb64bd2a8f32250822e3e83",
       "End": "5cf66972df3243ca9d2d561082de2dba",
-      "Id": "2986c590829d43e8851c40ee11186d55"
+      "Id": "2986c590829d43e8851c40ee11186d55",
+      "IsHidden": "False"
     },
     {
       "Start": "198aac10fb6346cd8f7e6c158fe0cf0e",
       "End": "07efe1b97c9041b5a186a0fa3c98ea17",
-      "Id": "8370fb08aced456bbae618c3f75464c4"
+      "Id": "8370fb08aced456bbae618c3f75464c4",
+      "IsHidden": "False"
     },
     {
       "Start": "5a68a75e6f474aef8ade8e6550bc6316",
       "End": "d0a6fc0f88d541cfa742b0157fcc1907",
-      "Id": "8c64a558478e4043a6bc92d62ad7c6a6"
+      "Id": "8c64a558478e4043a6bc92d62ad7c6a6",
+      "IsHidden": "False"
     },
     {
       "Start": "e2bc9fea319b4ed298065aac0cc9d355",
       "End": "fe0c199f082a41e6afcb3cb3ad8ec126",
-      "Id": "d9c77751530f43d3aa7ff9661a63155e"
+      "Id": "d9c77751530f43d3aa7ff9661a63155e",
+      "IsHidden": "False"
     },
     {
       "Start": "59827a963702495baaf9fa57a0d027eb",
       "End": "58e9366e38c24c54a95fd26958eef358",
-      "Id": "c3b2f573ee0d41e58b06181766cb8c2e"
+      "Id": "c3b2f573ee0d41e58b06181766cb8c2e",
+      "IsHidden": "False"
     },
     {
       "Start": "f186ce77c48e4bde8ca16a8fd254735d",
       "End": "179695cb14b14cc6beacbafc04348d3b",
-      "Id": "9f61d776fd094fb2ade0662bdda41780"
+      "Id": "9f61d776fd094fb2ade0662bdda41780",
+      "IsHidden": "False"
     },
     {
       "Start": "e77328670d6847949a2c7c54d38607a5",
       "End": "e612fb543c674aec9edf9551292b55ce",
-      "Id": "3f878680d7d74cdcae58fb54aaa8134d"
+      "Id": "3f878680d7d74cdcae58fb54aaa8134d",
+      "IsHidden": "False"
     },
     {
       "Start": "e9b70f3bb8b440ea982cc4550d57f4a0",
       "End": "595d60fe431047c68da35b067bebb188",
-      "Id": "56b2d9ba799f40abb18707ccc34264a6"
+      "Id": "56b2d9ba799f40abb18707ccc34264a6",
+      "IsHidden": "False"
     },
     {
       "Start": "e6aba09cde404c7587776ed41c076255",
       "End": "2981ff30925c42cd80638c1971942171",
-      "Id": "54a2b9598fd849b5acbe0ca8df1c09fa"
+      "Id": "54a2b9598fd849b5acbe0ca8df1c09fa",
+      "IsHidden": "False"
     },
     {
       "Start": "ff48de4c87bf4d589010d3803da25c63",
       "End": "96ada92981b14736bad45d075ed684fe",
-      "Id": "564f034dc0b945c8bcf601409e605dc2"
+      "Id": "564f034dc0b945c8bcf601409e605dc2",
+      "IsHidden": "False"
     },
     {
       "Start": "5ef27dd1a224479b9f64c965f6c4bd89",
       "End": "65a32c5a8ed244dab755f9719ec31f7d",
-      "Id": "c0f0db5daf2a454692533230ad9e9b67"
+      "Id": "ceb87d3bceef44f3b7766b9d4ac4bb78",
+      "IsHidden": "False"
     },
     {
       "Start": "fa18c696254b455787fd5f99c653f92e",
       "End": "d39dbc5f24984d998e5e40d18492681a",
-      "Id": "0a00ee7150a44551b980054c466eafc7"
+      "Id": "0a00ee7150a44551b980054c466eafc7",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "structure.py",
+      "ReferenceType": "External",
+      "Nodes": [
+        "33a554ad565b4e299a358d7232036538"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
   "ExtensionWorkspaceData": [
     {
       "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
@@ -995,32 +1030,40 @@
       "Data": {}
     }
   ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.11.0.4533",
+      "Version": "2.13.1.3887",
       "RunType": "Automatic",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -4.3093225955963135,
-      "EyeY": 3.9211688041687012,
-      "EyeZ": 12.554028511047363,
-      "LookX": 1.2816011905670166,
-      "LookY": 2.5847911834716797,
-      "LookZ": -24.997341156005859,
-      "UpX": -0.016246767714619637,
-      "UpY": 0.94832354784011841,
-      "UpZ": 0.31688886880874634
+      "EyeX": -9.0841064453125,
+      "EyeY": 7.675544261932373,
+      "EyeZ": 9.6608963012695313,
+      "LookX": 19.0841064453125,
+      "LookY": -2.675544261932373,
+      "LookZ": -24.660896301269531,
+      "UpX": -0.082000948488712311,
+      "UpY": 0.99098330736160278,
+      "UpZ": 0.10596294701099396
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
         "Name": "Data.ImportExcel",
+        "ShowGeometry": true,
         "Id": "8c12fcfd10ed4151a9eec99916f4b2ff",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1029,8 +1072,8 @@
         "Y": -79.831544748485868
       },
       {
-        "ShowGeometry": true,
         "Name": "File Path",
+        "ShowGeometry": true,
         "Id": "2916341fe7254f179a9023966e620702",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1039,8 +1082,8 @@
         "Y": -86.471933944452687
       },
       {
-        "ShowGeometry": true,
         "Name": "File From Path",
+        "ShowGeometry": true,
         "Id": "2f40a271b8be41bbac72866f5c8ac0d9",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1049,8 +1092,8 @@
         "Y": -84.374541245869793
       },
       {
-        "ShowGeometry": true,
         "Name": "String",
+        "ShowGeometry": true,
         "Id": "709ef003446c402b953c1af75db8d4e2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1059,8 +1102,8 @@
         "Y": 0.56932664303556635
       },
       {
-        "ShowGeometry": true,
         "Name": "List.Transpose",
+        "ShowGeometry": true,
         "Id": "7aa2a856f5ef40268ca4a790dade4f66",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1069,8 +1112,8 @@
         "Y": -75.649111870783457
       },
       {
-        "ShowGeometry": true,
         "Name": "NodeNumber",
+        "ShowGeometry": true,
         "Id": "78bb249da4274619b73fd31b91089b0d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1079,8 +1122,8 @@
         "Y": -83.024462326549127
       },
       {
-        "ShowGeometry": true,
         "Name": "NodeX",
+        "ShowGeometry": true,
         "Id": "9de7a0d64caf4f308cd7d21f467384b0",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1089,8 +1132,8 @@
         "Y": -83.024462326549127
       },
       {
-        "ShowGeometry": true,
         "Name": "NodeY",
+        "ShowGeometry": true,
         "Id": "2603795e4dc94e80a9fa16eb44bade87",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1099,8 +1142,8 @@
         "Y": -83.024462326549127
       },
       {
-        "ShowGeometry": true,
         "Name": "NodeZ",
+        "ShowGeometry": true,
         "Id": "eba86a943ed54190a31c38f1cc489b6f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1109,8 +1152,8 @@
         "Y": -83.024462326549127
       },
       {
-        "ShowGeometry": true,
         "Name": "Point.ByCoordinates",
+        "ShowGeometry": true,
         "Id": "3a19e0368d374e4ea1cc7506357ad1e4",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1119,8 +1162,8 @@
         "Y": -107.47019619907124
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (Lungime)",
+        "ShowGeometry": true,
         "Id": "a18cd55bdf944dacb5e5897fc8cd1230",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1129,8 +1172,8 @@
         "Y": 212.283871218287
       },
       {
-        "ShowGeometry": true,
         "Name": "Number",
+        "ShowGeometry": true,
         "Id": "5f97d96cbc0f41fa92cb4f4d5cd53f75",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1139,8 +1182,8 @@
         "Y": 133.504357384277
       },
       {
-        "ShowGeometry": true,
         "Name": "Range",
+        "ShowGeometry": true,
         "Id": "5bf74118d6f94ef7bec165fe2b5097f3",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1149,8 +1192,8 @@
         "Y": 201.91558722117645
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (pas deschidere)",
+        "ShowGeometry": true,
         "Id": "44fa4059041c45dc9bb9065853b5a8e7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1159,8 +1202,8 @@
         "Y": 290.969388632742
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (Latime)",
+        "ShowGeometry": true,
         "Id": "1ff56d1593764832b2861cda5011f70e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1169,8 +1212,8 @@
         "Y": 506.49961804187706
       },
       {
-        "ShowGeometry": true,
         "Name": "Number",
+        "ShowGeometry": true,
         "Id": "00219e66e3894145b2013f7ee910999b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1179,8 +1222,8 @@
         "Y": 427.72010420786705
       },
       {
-        "ShowGeometry": true,
         "Name": "Range",
+        "ShowGeometry": true,
         "Id": "d826d6d50d704955a0250552af4e4c5c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1189,8 +1232,8 @@
         "Y": 413.42523744804021
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (pas travee)",
+        "ShowGeometry": true,
         "Id": "3f8add0dc1bb4777860d21f2db66636d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1199,8 +1242,8 @@
         "Y": 585.18513545633209
       },
       {
-        "ShowGeometry": true,
         "Name": "Range",
+        "ShowGeometry": true,
         "Id": "e116e84a83b34e28b53be2f20f0bf8d3",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1209,8 +1252,8 @@
         "Y": 720.90934416229356
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (pas nivel)",
+        "ShowGeometry": true,
         "Id": "86dc770c004e4e0a97a92d282e89f6a7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1219,8 +1262,8 @@
         "Y": 927.56690125737794
       },
       {
-        "ShowGeometry": true,
         "Name": "Number Slider (Inaltime)",
+        "ShowGeometry": true,
         "Id": "55932b091ffe432989d54c536241c36d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1229,8 +1272,8 @@
         "Y": 767.99805502221056
       },
       {
-        "ShowGeometry": true,
         "Name": "Number",
+        "ShowGeometry": true,
         "Id": "e242a1c6230947f5a10eeda20fecd19d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1239,8 +1282,8 @@
         "Y": 707.3267491331361
       },
       {
-        "ShowGeometry": true,
         "Name": "Code Block",
+        "ShowGeometry": true,
         "Id": "5fb110ea1c314f5490edbf6f6c47ef01",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1249,8 +1292,8 @@
         "Y": 616.0
       },
       {
-        "ShowGeometry": true,
         "Name": "Python Script From String",
+        "ShowGeometry": true,
         "Id": "22e35d914925405ba13a7f318f85b43c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1259,8 +1302,8 @@
         "Y": 193.31664467749337
       },
       {
-        "ShowGeometry": true,
         "Name": "File Path",
+        "ShowGeometry": true,
         "Id": "33a554ad565b4e299a358d7232036538",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1269,8 +1312,8 @@
         "Y": 1041.779167757858
       },
       {
-        "ShowGeometry": true,
         "Name": "FileSystem.ReadText",
+        "ShowGeometry": true,
         "Id": "97508a8cf3494d148cd46fb7d9880cdc",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1279,8 +1322,8 @@
         "Y": 1042.0842402756925
       },
       {
-        "ShowGeometry": true,
         "Name": "Code Block",
+        "ShowGeometry": true,
         "Id": "229a5295678f4d649aaabed135e2f691",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1293,82 +1336,102 @@
       {
         "Id": "70d88c1bc99e4990adcfdfd5ddb48760",
         "Title": "Nodes\r\n",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "78bb249da4274619b73fd31b91089b0d",
           "9de7a0d64caf4f308cd7d21f467384b0",
           "2603795e4dc94e80a9fa16eb44bade87",
           "eba86a943ed54190a31c38f1cc489b6f"
         ],
+        "HasNestedGroups": false,
         "Left": 816.92948368915086,
-        "Top": -179.02446232654913,
-        "Width": 516.0,
-        "Height": 200.0,
+        "Top": -199.42446232654913,
+        "Width": 551.2,
+        "Height": 261.0,
         "FontSize": 36.0,
         "InitialTop": -83.024462326549127,
         "InitialHeight": 145.0,
-        "TextblockHeight": 86.0,
+        "TextblockHeight": 106.4,
         "Background": "#FFC1D676"
       },
       {
         "Id": "7e35378c990a43f6a972a68b2a7268bf",
         "Title": "X",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "a18cd55bdf944dacb5e5897fc8cd1230",
           "5f97d96cbc0f41fa92cb4f4d5cd53f75",
           "5bf74118d6f94ef7bec165fe2b5097f3",
           "44fa4059041c45dc9bb9065853b5a8e7"
         ],
+        "HasNestedGroups": false,
         "Left": -380.59398090168,
-        "Top": 80.504357384277,
-        "Width": 534.32185299332139,
-        "Height": 278.465031248465,
+        "Top": 60.304357384277004,
+        "Width": 545.12185299332145,
+        "Height": 362.465031248465,
         "FontSize": 36.0,
         "InitialTop": 133.504357384277,
         "InitialHeight": 302.465031248465,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 63.199999999999996,
         "Background": "#FFC1D676"
       },
       {
         "Id": "af5b32d4e4444c789426ec3a43a8fd72",
         "Title": "Y",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "1ff56d1593764832b2861cda5011f70e",
           "00219e66e3894145b2013f7ee910999b",
           "d826d6d50d704955a0250552af4e4c5c",
           "3f8add0dc1bb4777860d21f2db66636d"
         ],
+        "HasNestedGroups": false,
         "Left": -381.242655084375,
-        "Top": 360.42523744804021,
-        "Width": 532.9093688335355,
-        "Height": 292.75989800829188,
+        "Top": 340.22523744804022,
+        "Width": 543.70936883353556,
+        "Height": 376.75989800829183,
         "FontSize": 36.0,
         "InitialTop": 413.42523744804021,
         "InitialHeight": 316.75989800829188,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 63.199999999999996,
         "Background": "#FFC1D676"
       },
       {
         "Id": "50b85c36aba44b418580924defb1998f",
         "Title": "Z",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "55932b091ffe432989d54c536241c36d",
           "e242a1c6230947f5a10eeda20fecd19d",
           "e116e84a83b34e28b53be2f20f0bf8d3",
           "86dc770c004e4e0a97a92d282e89f6a7"
         ],
+        "HasNestedGroups": false,
         "Left": -372.85847368568579,
-        "Top": 654.3267491331361,
-        "Width": 522.62056050161675,
-        "Height": 341.24015212424183,
+        "Top": 634.12674913313606,
+        "Width": 533.42056050161682,
+        "Height": 425.24015212424194,
         "FontSize": 36.0,
         "InitialTop": 707.3267491331361,
         "InitialHeight": 365.24015212424194,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 63.199999999999996,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 363.46926182956588,
-    "Y": 19.638527010169071,
-    "Zoom": 0.70823125000000009
+    "X": 305.50524247700776,
+    "Y": 81.087649017412261,
+    "Zoom": 0.47536573696004625
   }
 }
