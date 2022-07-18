@@ -61,6 +61,68 @@ def generate_points():
 points = generate_points()
 
 
+def generate_horizontal_surfaces():
+    # Generate horizontal surfaces
+    surfaces_h = []
+    start_column = nFlor - nLine
+    end_list = len(points) - nLine - 1
+    line_counter = 0
+    column_counter = 0
+
+    for i, p in enumerate(points[0:end_list]):
+
+        # skip left nodes
+        if column_counter == nFlor - 1:
+            line_counter = 0
+            column_counter = 0
+            continue
+
+        if line_counter == nLine - 1:
+            line_counter = 0
+            column_counter += 1
+            continue
+
+        # skip top nodes 0 ÷ end_line-1
+        if line_counter >= 0 and start_column <= column_counter < nFlor:
+            line_counter += 1
+            column_counter += 1
+            continue
+
+        if column_counter <= nFlor:
+            if line_counter < nLine:
+                line_counter += 1
+            if column_counter < nFlor:
+                column_counter += 1
+            if line_counter == nLine:
+                line_counter = 0
+            if column_counter == nFlor:
+                column_counter = 0
+
+        surfaces_h.append(
+            # Surface.ByPerimeterPoints(
+                [
+                    points[i],
+                    points[i + 1],
+                    points[i + nLine + 1],
+                    points[i + nLine]
+                ]
+            # )
+        )
+    stories = []
+    start = 0
+    step = int(len(surfaces_h)/nLevel)
+    end = step
+    for x in range(0, nLevel):
+        stories.append(surfaces_h[start:end])
+        start += step
+        end += step
+
+    return stories
+
+
+slabs = generate_horizontal_surfaces()
+
+
 # Generate vertical surfaces
 def generete_front_surfaces():
     # Front surfaces
@@ -89,15 +151,54 @@ def generete_front_surfaces():
 
 
 def generate_right_surfaces():
-    return
+    right_surfaces = []
+    skip = nFlor - 1
+    for i in range(nLine - 1, nStructure - nFlor - nLine, nLine):
+        if i == skip:
+            skip += nFlor
+            continue
+        right_surfaces.append([points[i],
+                               points[i + nLine],
+                               points[i + nFlor + nLine],
+                               points[i + nFlor]]
+                              )
+    return right_surfaces
 
 
 def generate_back_surfaces():
-    return
+    back_surfaces = []
+    skip_end_flor = nFlor - 1
+    skip = nFlor - nLine
+    for i, val in enumerate(points[skip:nStructure]):
+        if i < skip:
+            continue
+        if i >= skip and not i == skip_end_flor:
+            back_surfaces.append([points[i],
+                                  points[i + 1],
+                                  points[i + nFlor + 1],
+                                  points[i + nFlor]]
+                                 )
+
+        if i == skip_end_flor:
+            skip_end_flor += nFlor
+            skip += nFlor
+
+    return back_surfaces
 
 
 def generate_left_surfaces():
-    return
+    left_surfaces = []
+    skip = nFlor - nLine
+    for i in range(0, nStructure - nFlor, nLine):
+        if i == skip:
+            skip += nFlor
+            continue
+        left_surfaces.append([points[i],
+                              points[i + nLine],
+                              points[i + nFlor + nLine],
+                              points[i + nFlor]]
+                             )
+    return left_surfaces
 
 
 def generate_vertical_surfaces():

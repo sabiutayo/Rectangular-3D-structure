@@ -164,8 +164,16 @@ def generate_horizontal_surfaces():
                 ]
             )
         )
-    return surfaces_h
+    stories = []
+    start = 0
+    step = int(len(surfaces_h)/nLevel)
+    end = step
+    for x in range(0, nLevel):
+        stories.append(surfaces_h[start:end])
+        start += step
+        end += step
 
+    return stories
 
 slabs = generate_horizontal_surfaces()
 
@@ -197,15 +205,60 @@ def generete_front_surfaces():
 
 
 def generate_right_surfaces():
-    return
+    right_surfaces = []
+    skip = nFlor - 1
+    for i in range(nLine - 1, nStructure - nFlor - nLine, nLine):
+        if i == skip:
+            skip += nFlor
+            continue
+        right_surfaces.append(
+            Surface.ByPerimeterPoints(
+                [points[i],
+                 points[i + nLine],
+                 points[i + nFlor + nLine],
+                 points[i + nFlor]]
+            ))
+    return right_surfaces
 
 
 def generate_back_surfaces():
-    return
+    back_surfaces = []
+    skip_end_flor = nFlor - 1
+    skip = nFlor - nLine
+    for i, val in enumerate(points[skip:nStructure]):
+        if i < skip:
+            continue
+        if i >= skip and not i == skip_end_flor:
+            back_surfaces.append(
+                Surface.ByPerimeterPoints(
+                    [points[i],
+                     points[i + 1],
+                     points[i + nFlor + 1],
+                     points[i + nFlor]]
+                ))
+
+        if i == skip_end_flor:
+            skip_end_flor += nFlor
+            skip += nFlor
+
+    return back_surfaces
 
 
 def generate_left_surfaces():
-    return
+    left_surfaces = []
+    skip = nFlor - nLine
+    for i in range(0, nStructure - nFlor, nLine):
+        if i == skip:
+            skip += nFlor
+            continue
+        left_surfaces.append(
+            Surface.ByPerimeterPoints(
+                [points[i],
+                 points[i + nLine],
+                 points[i + nFlor + nLine],
+                 points[i + nFlor]]
+            ))
+    return left_surfaces
 
 
 def generate_vertical_surfaces():
@@ -220,9 +273,6 @@ def generate_vertical_surfaces():
 
 
 walls = generate_vertical_surfaces()
-
-# Right surfaces
-rightSurfaces = []
 
 # Assign your output to the OUT variable.
 OUT = [
