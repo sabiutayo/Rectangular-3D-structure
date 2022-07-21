@@ -160,9 +160,12 @@ def generate_lines():
         if x_beams <= i < y_beams:
             if counter == 0 or counter == nLine-1:
                 edge_y_beams.append(val)
-                #if counter == nLine-1:
-
-            pass
+            else:
+                central_y_beams.append(val)
+            if counter == nLine-1:
+                counter = 0
+            else:
+                counter += 1
 
         # columns
         if y_beams <= i < len(line_list):
