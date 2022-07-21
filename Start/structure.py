@@ -276,9 +276,9 @@ walls = generate_vertical_surfaces()
 
 # Assign your output to the OUT variable.
 OUT = [
-    points,
+    #points,
     lines,
-    slabs,
-    walls
+    #slabs,
+    #walls
 
 ]
