@@ -157,9 +157,16 @@ def generate_lines():
                 else:
                     counter += 1
         # y beams
-        if x_beams <= counter < y_beams:
+        if x_beams <= i < y_beams:
+            if counter == 0 or counter == nLine-1:
+                edge_y_beams.append(val)
+                #if counter == nLine-1:
 
+            pass
 
+        # columns
+        if y_beams <= i < len(line_list):
+            pass
 
     beams.append(edge_x_beams)
     beams.append(edge_y_beams)

@@ -3,7 +3,7 @@
                       y beams   i = 48÷95   edge    48, 51,     counter_X 0÷3
                                                     52, 55,
                                                     56, 59,
-                      columns   i = 96÷159
+                      columns   i = 96÷143
 0   1   2   3
 4   5   6   7
 8   9   10  11
