@@ -111,7 +111,65 @@ def generate_lines():
     for i in range(0, len(start)):
         line_list.append(Line.ByStartPointEndPoint(start[k], end[k]))
         k += 1
-    return line_list
+
+    beams = []
+    central_x_beams = []
+    central_y_beams = []
+    edge_x_beams = []
+    edge_y_beams = []
+    columns = []
+    edge_columns = []
+    central_columns = []
+    counter = 0
+    x_beams = (nFlor - nLine) * nLevel
+    y_beams = x_beams + (nFlor - nColumn) * nLevel
+    counter_y = 0
+    for i, val in enumerate(line_list):
+        # x beams
+        if i < x_beams:
+            if 0 <= counter < nFlor - nLine:
+                if 0 <= counter < nLine - 1 or nFlor - nLine - nLine < counter < nFlor - nLine:
+                    edge_x_beams.append(val)
+                else:
+                    central_x_beams.append(val)
+                if counter == nFlor - nLine - 1:
+                    counter = 0
+                else:
+                    counter += 1
+        # y beams
+        if x_beams <= i < y_beams:
+            if counter == 0 or counter == nLine - 1:
+                edge_y_beams.append(val)
+            else:
+                central_y_beams.append(val)
+            if counter == nLine - 1:
+                counter = 0
+            else:
+                counter += 1
+
+        # columns
+        if y_beams <= i < len(line_list):
+            if 0 <= counter <= nLine or nFlor - nLine - 1 <= counter < nFlor or 0 == counter_y or nLine - 1 == counter_y:
+                edge_columns.append(val)
+            else:
+                central_columns.append(val)
+            if counter == nFlor - 1:
+                counter = 0
+            else:
+                counter += 1
+            if counter_y == nLine-1:
+                counter_y = 0
+            else:
+                counter_y += 1
+
+    beams.append(edge_x_beams)
+    beams.append(edge_y_beams)
+    beams.append(central_x_beams)
+    beams.append(central_y_beams)
+    columns.append(edge_columns)
+    columns.append(central_columns)
+
+    return [columns, beams]
 
 
 lines = generate_lines()
